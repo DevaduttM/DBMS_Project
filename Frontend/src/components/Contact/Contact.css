@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap');
+
+.contact-container{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-container{
+    background-color: #333333e3;
+    height: 80%;
+    width: 70%;
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contact-title{
+    font-family: "Big Shoulders Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    font-size: 2.4rem;
+    margin: 0;
+}
+
+.contact-logo{
+    height: 80px;
+    width: auto;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70%;
+    width: 50%;
+}
+
+.contact-row{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.contact-row3{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.contact-input{
+    width: 45%;
+    height: 45%;
+    border-radius: 14px;
+    outline: none;
+    border: 1px solid #515151;
+    padding-left: 15px;
+    margin: 0;
+    background-color: #373737;
+    color: #fff;
+}
+
+textarea{
+    height: 100%;
+    width: 100%;
+    border-radius: 14px;
+    outline: none;
+    border: 1px solid #515151;
+    padding-left: 15px;
+    padding-top: 15px;
+    margin: 0;
+    background-color: #373737;
+    max-height: 110%;
+    color: #fff;
+}
+
+input:focus, textarea:focus{
+    border: 1px solid #fff;
+}
+
+.send-btn{
+    width: 50%;
+    height: 40%;
+    border-radius: 14px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

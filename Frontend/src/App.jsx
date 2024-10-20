@@ -5,14 +5,14 @@ import Login from './components/Login/Login'
 import About from './components/About/About'
 import './App.css'
 
-import Landing from './components/Landing/Landing'
+import Pages from './components/Pages/Pages'
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Landing />} />
+          <Route index element={<Pages />} />
           <Route path='/signup' element = {<Signup />} />
           <Route path='/about' element = {<About />} />
           <Route path='/login' element = {<Login />} />

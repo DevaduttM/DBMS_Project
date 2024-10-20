@@ -89,14 +89,14 @@ const Navbar = () => {
 
           <div className="link-container">
             <motion.div variants={itemVariants}>
-              <Link className="link-a" to="/" onClick={toggleMenu}>
+              <a className="link-a" href='#Home' onClick={toggleMenu}>
                 Home
-              </Link>
+              </a>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <Link className="link-a" to="/about" onClick={toggleMenu}>
+              <a className="link-a" href='#About' onClick={toggleMenu}>
                 About
-              </Link>
+              </a>
             </motion.div>
             <motion.div variants={itemVariants}>
               <Link className="link-a" to="/cars" onClick={toggleMenu}>

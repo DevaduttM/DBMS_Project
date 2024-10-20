@@ -1,0 +1,10 @@
+.pages-container{
+    background-image: url(../../assets/Bgimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
