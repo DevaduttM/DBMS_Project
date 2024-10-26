@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
+
+.main-container3{
+    height: 75vh;
+    width: 100vw;
+    background-image: linear-gradient(to bottom, #2D2D2D, #2D2B2B);
+}
+
+.main-container3::after{
+    background-image: linear-gradient(to bottom, #1E1D1D, #202020);
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: 25vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+
+.cardata-title{
+    color: #fff;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 65px;
+    font-style: normal;
+    letter-spacing: 6px;
+    margin: 0;
+    position: absolute;
+    left: 100px;
+    top: 170px;
+}
+
+.cardata-title span{
+    color: #EFE731;
+    font-size: 100px;
+}
+
+.car-img{
+    width: 850px;
+    height: auto;
+    position: absolute;
+    bottom: 100px;
+    left: 70px;
+}
+
+
+.cardata-info{
+    height: 550px;
+    width: 470px;
+    background-color: #333333d8;
+    position: absolute;
+    right: 80px;
+    bottom: 150px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-title{
+    margin: 0;
+    margin-bottom: 25px;
+    color: #fff;
+    font-family: "Aboreto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 27px;
+}
+
+.cardata-info-table{
+    width: 78%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info{
+    display: flex;
+    width: 100%;
+    border-radius: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #515151;
+    padding: 15px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.info:hover{
+    scale: 1.05;
+}
+
+.info p{
+    color: #fff;
+    font-family: "Baskervville", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.book-btn{
+    position: absolute;
+    bottom: -80px;
+    width: 120px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: #EFE731;
+    border: none;
+    font-family: "Big Shoulders Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .cardata-title{
+        font-size: 30px;
+        left: 50px;
+        top: 120px;
+    }
+
+    .car-img{
+        width: 350px;
+        top: 25vh;
+        left: 7vw;
+    }
+
+    .cardata-title span{
+        font-size: 50px;
+    }
+
+    .main-container3{
+        height: 35vh;
+    }
+
+    .main-container3::after{
+        height: 65vh;
+    }
+
+    .cardata-info{
+        scale: 0.75;
+        right: 0;
+        top: 37vh;
+        left: -7vw;
+    }
+}
