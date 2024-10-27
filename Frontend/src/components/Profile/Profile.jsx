@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import userImg from '../../assets/shrek.jpg'
 import './Profile.css'
 import { IoMdExit } from "react-icons/io";
+import { update } from '../API/ApiCalls'
 
 const Profile = () => {
 
@@ -12,6 +13,7 @@ const Profile = () => {
     const[phone, setPhone] = useState("");
     const[dob, setDob] = useState("");
     const [user, setUser] = useState(null);
+    const [change, setChange] = useState(0);
     
     const navigate = useNavigate();
 
@@ -32,6 +34,22 @@ const Profile = () => {
         navigate('/dashboard');
     }
 
+    const handleUpdate = async () => {
+        try{
+            const response = await update({fname, lname, email});
+            console.log(response);
+            if(response.affectedRows != 0){
+                alert("Profile updated successfully");
+                setUser({...user, fname, lname});
+                localStorage.setItem('user', JSON.stringify({...user, fname, lname}));
+            }
+
+        }
+        catch (error) {
+            console.error("Login failed:", error);
+        }
+    }
+
   return (
     <>
             <div className="profile-container">
@@ -49,16 +67,16 @@ const Profile = () => {
                     <div className="info-section">
                         <div className="info-section-div">
                             <p className='info-p'> First Name</p>
-                            <input className="info-text" value={fname} onChange={e => setFname(e.target.value)} placeholder='NA'/>
+                            <input className="info-text" value={fname} onChange={e => {setFname(e.target.value); setChange(1)}} placeholder='NA'/>
                         </div>
                         <div className="info-section-div">  
                             <p className="info-p">Last Name</p>
-                            <input className="info-text" value={lname} onChange={e => setLname(e.target.value)} placeholder='NA'/>
+                            <input className="info-text" value={lname} onChange={e => {setLname(e.target.value); setChange(1)}} placeholder='NA'/>
                         </div>
 
                         <div className="info-section-div">
                             <p className="info-p">Email</p>
-                            <input className="info-text" value={email} onChange={e => setEmail(e.target.value)} placeholder='NA' />
+                            <input className="info-text" value={email} onChange={e => setEmail(e.target.value)} placeholder='NA' disabled style={{cursor: 'not-allowed'}} />
                         </div>
 
                         <div className="info-section-div">
@@ -68,9 +86,16 @@ const Profile = () => {
 
                         <div className="info-section-div">
                             <p className="info-p">Date Of Birth</p>
-                            <input className="info-text" value={dob} onChange={e => setDob(e.target.value)} placeholder='NA' />
+                            <input className="info-text" value={dob} onChange={e => {setDob(e.target.value); setChange(1)}} placeholder='NA' />
                         </div>
+                        
                     </div>
+                    
+                        
+                    <div className="update-btn-div">
+                    <button className="update-btn" disabled={change === 0} onClick={handleUpdate}>Update Data</button>
+                    </div>
+                    
                 </div>
             </div>
     </>

@@ -7,7 +7,7 @@ import DashItems from './DashItems';
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import DashItemsPast from './DashItemsPast';
-
+ 
 const Dashboard = () => {
     const [dropdown, setDropdown] = useState(false);
     const [user, setUser] = useState(null);
@@ -60,7 +60,11 @@ const Dashboard = () => {
                         </AnimatePresence>
                     </div>
                 </div>
-                <div className="dash-row1">
+                <motion.div 
+                initial={{ opacity: 0, scale: 0.98}}
+                animate = {{ opacity: 1, scale: 1}}
+                transition={{duration: 0.7}}
+                className="dash-row1">
                     <div className="row1-items">
                         <h2 className="sub-title">Upcoming Rentals</h2>
                         <DashItems />
@@ -76,8 +80,12 @@ const Dashboard = () => {
                         <p className="findcars-p">Have a car that’s not in use? Put it to work! With our "Rent Your Car" feature, you can easily list your vehicle on our platform and start earning by sharing it with our trusted community.</p>
                         <Link to = "/rentyourcar" className='findcars-btn'>Rent Your Car</Link>
                     </div>
-                </div>
-                <div className="dash-row2">
+                </motion.div>
+                <motion.div 
+                initial={{ opacity: 0, scale: 0.98}}
+                animate = {{ opacity: 1, scale: 1}}
+                transition={{duration: 0.7 }}
+                className="dash-row2">
                     <div className="row2-item1">
                         <h2 className="sub-title1">Rental History</h2>
                         <DashItemsPast />
@@ -92,12 +100,15 @@ const Dashboard = () => {
                                 pathColor: '#5be271',
                                 strokeLineCap: 'butt',
                                 trailColor: '#3f3d3d',
-                                textColor: '#5be271'
+                                textColor: '#5be271',
+                                transition: 'stroke-dashoffset 0.5s ease 0s',
+                                transform: 'rotate(0.25turn)',
+                                transformOrigin: 'center center',
                             })} />
                         </div>
                         <p className='reward-p'>Complete 5 rental transactions to unlock your first reward !</p>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </>
     );

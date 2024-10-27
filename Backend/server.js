@@ -24,6 +24,15 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/update', (req, res) => {
+    const sql = "UPDATE customer SET FirstName = ?, LastName = ? WHERE Email = ? ";
+    const values = [req.body.fname, req.body.lname, req.body.email];
+    db.query(sql, values, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    })
+})
+
 app.post('/signup', (req, res) => {
     const sql = "insert into customer (FirstName, LastName, Email, password) VALUES (?, ?, ?, ?)";
     const values = [req.body.firstname, req.body.lastname, req.body.email, req.body.password];

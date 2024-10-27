@@ -14,7 +14,7 @@
 
 .welcome{
     text-align: left;
-    margin-top: 50px;
+    margin-top: 65px;
     margin-bottom: 0;
     color: #fff;
     /* font-family: "Baskervville", serif;
@@ -165,7 +165,7 @@
     right: 0px;
     border-radius: 20px;
     gap: 20px;
-    background-color: #62DB62;
+    background-color: #5be271;
     width: 190px;
     height: 170px;
     padding-top: 12px;

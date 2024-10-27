@@ -12,7 +12,7 @@
 
 .header-section{
     background-color: #2D2D2D;
-    height: 250px;
+    height: 220px;
     width: 100vw;
     text-align: center;
     color: #fff;
@@ -41,6 +41,7 @@
 
 .profile-title{
     margin: 0;
+    margin-top: -20px;
 }
 
 .profile-info{
@@ -99,4 +100,24 @@
     font-style: normal;
     font-size: 18px;
     border: 0.1px solid #a19f9f41;
+}
+
+.update-btn{
+    border: none;
+    margin-top: 40px;
+    height: 45px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: #9adb65;
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.update-btn:disabled{
+    background-color: #9adb6586;
+    cursor: not-allowed;
 }

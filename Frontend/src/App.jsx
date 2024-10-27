@@ -11,6 +11,7 @@ import './App.css'
 import Pages from './components/Pages/Pages'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import LoginRoute from './components/ProtectedRoute/LoginRoute'
+import Cars  from './components/Cars/Cars'
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
             <Route path='/profile' element = {<Profile /> } />
           </Route>
           <Route path='/cardata' element = {<CarData />} />
+          <Route path='/cars' element = {<Cars />} />
         </Routes>
       </BrowserRouter>
     </>

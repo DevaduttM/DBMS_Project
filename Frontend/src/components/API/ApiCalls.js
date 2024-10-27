@@ -20,3 +20,13 @@ export const signup = async (newUser) => {
       throw error;
    }
 };
+
+export const update = async (updatedata) => {
+    try {
+      const response = await axios.post('http://localhost:8081/update', updatedata);
+      return response.data;
+    } catch (error) {
+      console.error("Update Error:", error);
+      throw error;
+    }
+}
