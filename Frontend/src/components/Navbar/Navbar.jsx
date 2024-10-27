@@ -46,6 +46,8 @@ const Navbar = () => {
     }
   };
 
+  const loggedIn = window.localStorage.getItem('isLoggedIn');
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     return () => {
@@ -112,7 +114,9 @@ const Navbar = () => {
 
           <motion.div variants={itemVariants}>
             <Link to="/login" className="loginbtn">
-              Log In
+            {
+              loggedIn? 'Dashboard' : 'Log In'
+            }
             </Link>
           </motion.div>
         </motion.div>

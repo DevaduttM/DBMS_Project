@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook, FaLongArrowAltRight  } from "react-icons/fa";
 import { AnimatePresence, motion } from 'framer-motion'
 import './Signup.css'
+import {signup} from '../API/ApiCalls'
 import axios from 'axios';
 
 const Signup = () => {
@@ -45,27 +46,41 @@ const Signup = () => {
         // console.log(validLength)
       }
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         const newUser = { firstname, lastname, email, password };
-        console.log(newUser);
-        axios.post('http://localhost:8081/signup', newUser)
+      //   console.log(newUser);
+      //   axios.post('http://localhost:8081/signup', newUser)
 
-       .then(res => {
-          console.log(res.data)
-          if(res.data === 2){
-            setEmail("");
-            alert("Email already Exists");
-          }
-          else{
-            alert("Signup Succesful. Please login"); 
-            navigate('/login');
-          }
-        })
+      //  .then(res => {
+      //     console.log(res.data)
+      //     if(res.data === 2){
+      //       setEmail("");
+      //       alert("Email already Exists");
+      //     }
+      //     else{
+      //       alert("Signup Succesful. Please login"); 
+      //       navigate('/login');
+      //     }
+      //   })
 
-       .catch(err => {
-          console.log(err);
-        });
+      //  .catch(err => {
+      //     console.log(err);
+      //   });
+
+      try {
+        const responseData = await signup(newUser); // Call the signup function
+        if (responseData === 2) {
+           setEmail("");
+           alert("Email already exists");
+        } else {
+           alert("Signup Successful. Please login");
+           navigate('/login');
+        }
+     } catch (error) {
+        alert("An error occurred during signup."); // Show user-friendly error
+        console.error(error);
+     }
 
       }
 

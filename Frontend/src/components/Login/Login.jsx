@@ -4,8 +4,9 @@ import { FaGoogle, FaFacebook, FaLongArrowAltRight  } from "react-icons/fa";
 import { AnimatePresence, motion } from 'framer-motion'
 import '../Signup/Signup.css'
 import axios from 'axios';
+import {login} from '../API/ApiCalls'
 
-const Signup = () => {
+const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
@@ -14,18 +15,33 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8081/login', {email: email, password: password})
-    .then(res => {
-      res.data.length > 0 ? navigate("/dashboard") : setLoginstatus(1)
-    })
+
+    try {
+      const data = await login(email, password); 
+      if (data.length > 0) {
+        const user = {
+          name: data[0].FirstName + ' ' + data[0].LastName,
+          fname: data[0].FirstName,
+          lname: data[0].LastName,
+          email: data[0].Email,
+          phone: data[0].PhoneNumber
+        }
+        window.localStorage.setItem('isLoggedIn', true);
+        window.localStorage.setItem('user', JSON.stringify(user));
+        navigate("/dashboard"); 
+      } else {
+        setLoginstatus(1);
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      setLoginstatus(1);
+    }
+  };
     
-    .catch(err => {
-      console.error(err);
-    })
-    
-  }
+  
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -98,4 +114,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Login
