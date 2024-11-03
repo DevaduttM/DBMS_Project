@@ -156,3 +156,38 @@
         left: -7vw;
     }
 }
+
+@media (max-width:400px){
+    .cardata-title{
+        font-size: 20px;
+        left: 50px;
+        top: 80px;
+    }
+
+    .car-img{
+        width: 330px;
+        top: 20vh;
+        left: 7vw;
+    }
+
+    .cardata-info{
+        scale: 0.7;
+        position: relative;  
+        margin: 0;
+        /* position: absolute; */
+        left: -45px;
+    }
+
+
+    .main-container3::before{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-container3{
+        height: 120vh;
+    }
+
+}

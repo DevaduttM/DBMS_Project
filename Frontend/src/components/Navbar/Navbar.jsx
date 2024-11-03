@@ -100,11 +100,11 @@ const Navbar = () => {
                 About
               </a>
             </motion.div>
-            <motion.div variants={itemVariants}>
+            {/* <motion.div variants={itemVariants}>
               <Link className="link-a" to="/cars" onClick={toggleMenu}>
                 Cars
               </Link>
-            </motion.div>
+            </motion.div> */}
             <motion.div variants={itemVariants}>
               <a className="link-a" href="#Contact" onClick={toggleMenu}>
                 Contact Us

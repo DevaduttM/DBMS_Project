@@ -37,7 +37,6 @@ const Profile = () => {
     const handleUpdate = async () => {
         try{
             const response = await update({fname, lname, email});
-            console.log(response);
             if(response.affectedRows != 0){
                 alert("Profile updated successfully");
                 setUser({...user, fname, lname});
@@ -81,12 +80,12 @@ const Profile = () => {
 
                         <div className="info-section-div">
                             <p className="info-p">Phone</p>
-                            <input className="info-text" value={phone} onChange={e => setPhone(e.target.value)} placeholder='NA'/>
+                            <input className="info-text" value={phone || ''} onChange={e => setPhone(e.target.value)} placeholder='NA'/>
                         </div>
 
                         <div className="info-section-div">
                             <p className="info-p">Date Of Birth</p>
-                            <input className="info-text" value={dob} onChange={e => {setDob(e.target.value); setChange(1)}} placeholder='NA' />
+                            <input className="info-text" value={dob || ''} onChange={e => {setDob(e.target.value); setChange(1)}} placeholder='NA' />
                         </div>
                         
                     </div>

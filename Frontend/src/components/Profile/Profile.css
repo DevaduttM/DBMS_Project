@@ -121,3 +121,30 @@
     background-color: #9adb6586;
     cursor: not-allowed;
 }
+
+@media screen and (max-width: 768px){
+    .info-section{
+        flex-direction: column;
+        width: 90vw;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .profile-container{
+        width: 100vw;
+        height: fit-content;
+    }
+
+    .info-section-div{
+        width: 90%;
+    }
+
+    .update-btn{
+        margin-bottom: 50px;
+    }
+
+    .profile-title{
+        font-size: 30px;
+        margin-top: 10px;
+    }
+}

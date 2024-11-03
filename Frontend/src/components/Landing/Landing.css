@@ -65,7 +65,7 @@
 }
 
 .ant-switch {
-    background-color: #efe53191 ; 
+    background-color: #5f5e4291 ; 
 }
 
 .search-form{
@@ -150,6 +150,16 @@
     border: none;
     outline: none;
     cursor: pointer;
+    background-color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
 }
 
 

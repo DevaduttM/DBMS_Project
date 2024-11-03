@@ -112,6 +112,7 @@
 
 .row1-items{
     width: 30%;
+    /* width: calc(100vw / 3.7); */
     height: 90%;
     display: flex;
     align-items: center;
@@ -144,9 +145,11 @@
 }
 
 .account{
-    margin-right: 40px;
-    margin-top: 30px;
-    position: relative;
+    /* margin-right: 40px;
+    margin-top: 30px; */
+    top: 30px;
+    right: 20px;
+    position: absolute;
     padding: 10px;
     width: 55px;
     font-size: 20px;
@@ -262,6 +265,10 @@
     border-radius: 10px;
     color: #000;
     font-weight: 400;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    cursor: pointer;
 }
 
 .progress{
@@ -272,4 +279,129 @@
 .reward-p{
     font-size: 20px;
     font-weight: 300;
+}
+
+.car-search-container{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.925);
+    z-index: 1;
+}
+
+.close-icon{
+    color: #fff;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
+
+@media (max-width: 825px) {
+    .welcome{
+        font-size: 22px;
+        margin-top: 150px;
+    }
+
+    .main-container1{
+        gap: 30px;
+    }
+
+    .dash-row1{
+        flex-direction: column;
+        height: fit-content;
+        width: 90vw;
+        gap: 30px;
+    }
+
+    .row1-items{
+        width: 85%;
+    }
+
+    .dash-row2{
+        height: fit-content;
+        gap: 30px;
+        flex-direction: column-reverse;
+    }
+
+    .account-dropdown{
+        box-shadow: -2px 2px 5px #00000091;
+    }
+
+    .row2-item1{
+        width: 85%;
+    }
+
+    .dashitem-past{
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .dashitem{
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .reward-p{
+        text-align: center;
+    }
+
+    .findcars-btn{
+        margin-bottom: 12px;
+        border: none;
+    }
+}
+
+
+
+@media (min-width: 826px) and (max-width: 1300px) {
+    .welcome{
+        font-size: 40px;
+    }
+
+    .dash-row1{
+        width: 100vw;
+        gap: 10px;
+    }
+
+    .row1-items{
+        width: calc(100vw / 3.7)
+    }
+
+    .dashitem{
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .findcars-p{
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .row2-item1{
+        width: calc(100vw / 1.66);
+        height: 90%;
+    }
+
+    .reward-p{
+        text-align: center;
+    }
+
+    .dashitem-past{
+        font-size: 15px;
+    }
+
+    .main-container1{
+        min-height: 100vh;
+        max-height: fit-content;
+        justify-content: space-around;
+    }
+
 }

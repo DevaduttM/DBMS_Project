@@ -3,14 +3,17 @@ import { Link, useNavigate, Navigate } from 'react-router-dom';
 import './Dashboard.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 import DashItems from './DashItems';
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import DashItemsPast from './DashItemsPast';
+import CarSearch from '../CarSearch/CarSearch';
  
 const Dashboard = () => {
     const [dropdown, setDropdown] = useState(false);
     const [user, setUser] = useState(null);
+    const [showSearch, setShowSearch] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,33 +35,19 @@ const Dashboard = () => {
         <Navigate to = "/login" />
     };
 
+    const toggleSearch = () => {
+        setShowSearch(!showSearch);
+    };
+    showSearch ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
+
     return (
         <>
-            <div className="main-container1">
+            <div className="main-container1" onClick={() => setDropdown(false)}>
                 <div className="top-container">
                     <h1 className="welcome">
                         {`Welcome ${user ? user.fname + ' ' + user.lname : 'Guest'}`}
                     </h1>
-                    <div className="account" onClick={handleDropdown}>
-                        <FaUserCircle />
-                        <FaChevronDown />
-                        <AnimatePresence>
-                            {dropdown && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className="account-dropdown"
-                                >
-                                    <Link to = "/">Home</Link>
-                                    <hr></hr>
-                                    <Link to="/profile">Profile</Link>
-                                    <hr />
-                                    <Link to="/login" onClick={handleLogout}>Logout</Link>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
+                    
                 </div>
                 <motion.div 
                 initial={{ opacity: 0, scale: 0.98}}
@@ -73,7 +62,7 @@ const Dashboard = () => {
                     <div className="row1-items">
                         <h2 className="sub-title">Find Cars</h2>
                         <p className='findcars-p'>Ready to explore our extensive collection of rental cars? Click "Find Your Car" to discover a wide range of vehicles suited to every style and need. From compact cars to luxurious SUVs, our selection is designed to make your journey comfortable, convenient, and enjoyable.</p>
-                        <Link to="/cars" className="findcars-btn">Find Your Car</Link>
+                        <button onClick={toggleSearch} className="findcars-btn">Find Your Car</button>
                     </div>
                     <div className="row1-items">
                         <h2 className="sub-title" id = "rent-title">Rent your car</h2>
@@ -109,7 +98,42 @@ const Dashboard = () => {
                         <p className='reward-p'>Complete 5 rental transactions to unlock your first reward !</p>
                     </div>
                 </motion.div>
+            <AnimatePresence>
+            {
+                showSearch && (
+                    <motion.div
+                    initial={{ opacity: 0}}
+                    animate = {{ opacity: 1}}
+                    exit={{opacity: 0}}
+                    className="car-search-container">
+                        <IoMdClose className='close-icon' onClick={toggleSearch} />
+                        <CarSearch onClick={(e) => e.stopPropagation()} />
+                    </motion.div>
+                )
+            }
+            </AnimatePresence>
             </div>
+
+            <div className="account" onClick={handleDropdown}>
+                <FaUserCircle />
+                <FaChevronDown />
+                <AnimatePresence>
+                    {dropdown && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="account-dropdown">
+                            <Link to = "/">Home</Link>
+                            <hr></hr>
+                            <Link to="/profile">Profile</Link>
+                            <hr />
+                            <Link to="/login" onClick={handleLogout}>Logout</Link>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+
         </>
     );
 };
