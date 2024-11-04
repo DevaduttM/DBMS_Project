@@ -47,6 +47,20 @@ app.post('/signup', (req, res) => {
     })
 })
 
+app.post('/rentyourcar', (req, res) => {
+    const sql = "insert into vehicle (LicensePlate, Make, Model, Year, OwnerID, transmission) values (?, ?, ?, ?, ?, ?)"
+    const values = [req.body.LicensePlate, req.body.Make, req.body.Model, req.body.Year, req.body.CustomerID, req.body.transmission];
+    console.log(values)
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            if (err.code === 'ER_DUP_ENTRY') {
+                return res.json("Duplicate Entry");
+            }
+        } return res.json(err);
+        return res.json(data);
+    })
+})
+
 
 app.listen(8081, () => {
     console.log('listening on 8081');

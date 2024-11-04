@@ -31,4 +31,14 @@ export const update = async (updatedata) => {
     }
 }
 
+export const rentInsert = async (rentData) => {
+   try {
+      const response = await axios.post('http://localhost:8081/rentyourcar', rentData);
+      return response.data;
+   } catch (error) {
+      console.error("Rent Insert Error:", error);
+      throw error;
+    }
+}
+
 

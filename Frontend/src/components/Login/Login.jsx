@@ -27,7 +27,8 @@ const Login = () => {
           fname: data[0].FirstName,
           lname: data[0].LastName,
           email: data[0].Email,
-          phone: data[0].PhoneNumber
+          phone: data[0].PhoneNumber,
+          id: data[0].CustomerID
         }
         window.localStorage.setItem('isLoggedIn', true);
         window.localStorage.setItem('user', JSON.stringify(user));
