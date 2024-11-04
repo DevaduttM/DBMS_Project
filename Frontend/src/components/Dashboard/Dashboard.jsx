@@ -9,11 +9,13 @@ import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import DashItemsPast from './DashItemsPast';
 import CarSearch from '../CarSearch/CarSearch';
+import Trophy from '../../assets/Trophy.png'
  
 const Dashboard = () => {
     const [dropdown, setDropdown] = useState(false);
     const [user, setUser] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
+    const [rewardValue, setRewardValue] = useState(5);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -85,17 +87,28 @@ const Dashboard = () => {
                     <div className="row1-items">
                         <h2 className="sub-title">Rewards</h2>
                         <div className="progress">
-                            <CircularProgressbar value={4} maxValue={5} text={'4/5'} styles={buildStyles({
-                                pathColor: '#5be271',
-                                strokeLineCap: 'butt',
-                                trailColor: '#3f3d3d',
-                                textColor: '#5be271',
-                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                transform: 'rotate(0.25turn)',
-                                transformOrigin: 'center center',
-                            })} />
+                            {
+                                rewardValue >= 5 && rewardValue < 10 ? ( <div className='progress-content'> <img src={ Trophy } className='trophy-img' alt="" /> 
+                                <p className='reward-p'>Congratulations</p>
+                                </div> )
+
+                                : (
+                                <div className='progress-content'>
+                                <CircularProgressbar value={rewardValue} maxValue={5} text={`${rewardValue}/5`} className='progress-circle' styles={buildStyles({
+                                    pathColor: '#5be271',
+                                    strokeLineCap: 'butt',
+                                    trailColor: '#3f3d3d',
+                                    textColor: '#5be271',
+                                    transition: 'stroke-dashoffset 0.5s ease 0s',
+                                    transform: 'rotate(0.25turn)',
+                                    transformOrigin: 'center center',
+                                })} />
+                                <p className='reward-p'>Complete 5 rental transactions to unlock your first reward !</p>
+                                </div>
+                            )
+                                }
                         </div>
-                        <p className='reward-p'>Complete 5 rental transactions to unlock your first reward !</p>
+                        
                     </div>
                 </motion.div>
             <AnimatePresence>

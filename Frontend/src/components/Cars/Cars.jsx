@@ -12,7 +12,13 @@ const Cars = () => {
 
 const [btnsel, setBtnsel] = useState(0);
 const [dropdwn, setDropdwn] = useState(0);
+const [hatchback, setHatchback] = useState(false);
+const [sedan, setSedan] = useState(false);
+const [suv, setSuv] = useState(false);
+const [automatic, setAutomatic] = useState(false);
+const [manual, setManual] = useState(false);
 const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
 
 const loggedIn = window.localStorage.getItem('isLoggedIn');
 
@@ -77,18 +83,18 @@ useEffect(() => {
                             <hr />
                             <p>Seating Capacity :</p>
                             <div className="checkbox-div1">
-                                <input type="checkbox" id = "checkbox1" />
+                                <input type="checkbox" id = "checkbox1" checked = {hatchback} onChange={() => setHatchback(!hatchback)} />
                                 <label htmlFor="checkbox1">Hatchback</label>
-                                <input type="checkbox" id = "checkbox2" />
+                                <input type="checkbox" id = "checkbox2" checked = {sedan} onChange={() => setSedan(!sedan)}/>
                                 <label htmlFor="checkbox2">Sedan</label>
-                                <input type="checkbox" id = "checkbox3" />
+                                <input type="checkbox" id = "checkbox3" checked = {suv} onChange={() => setSuv(!suv)} />
                                 <label htmlFor="checkbox3">SUV</label>
                             </div>
                             <p>Transmission :</p>
                             <div className="checkbox-div2">
-                                <input type="checkbox" id = "checkbox4" />
+                                <input type="checkbox" id = "checkbox4" checked = {automatic} onChange={() => setAutomatic(!automatic)} />
                                 <label htmlFor="checkbox4">Automatic</label>
-                                <input type="checkbox" id = "checkbox5" />
+                                <input type="checkbox" id = "checkbox5" checked = {manual} onChange={() => setManual(!manual)} />
                                 <label htmlFor="checkbox5">Manual</label>
                             </div>
                         </motion.div>

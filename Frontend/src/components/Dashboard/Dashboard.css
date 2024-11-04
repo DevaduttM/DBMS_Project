@@ -162,6 +162,19 @@
     height: 25px;
 }
 
+.trophy-img{
+    width: 180px;
+}
+
+.progress-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .account-dropdown {
     position: absolute;
     top: 50px;
@@ -272,8 +285,13 @@
 }
 
 .progress{
-    height: 200px;
+    height: 100%;
+    width: 100%;
+}
+
+.progress-circle{
     width: 200px;
+    height: 200px;
 }
 
 .reward-p{
