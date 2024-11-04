@@ -48,8 +48,8 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/rentyourcar', (req, res) => {
-    const sql = "insert into vehicle (LicensePlate, Make, Model, Year, OwnerID, transmission) values (?, ?, ?, ?, ?, ?)"
-    const values = [req.body.LicensePlate, req.body.Make, req.body.Model, req.body.Year, req.body.CustomerID, req.body.transmission];
+    const sql = "insert into vehicle (LicensePlate, Make, Model, Year, OwnerID, transmission, Type) values (?, ?, ?, ?, ?, ?, ?)"
+    const values = [req.body.LicensePlate, req.body.Make, req.body.Model, req.body.Year, req.body.CustomerID, req.body.transmission, req.body.VehicleType];
     console.log(values)
     db.query(sql, values, (err, data) => {
         if (err) {

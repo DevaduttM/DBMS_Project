@@ -11,10 +11,11 @@ const [model, setModel] = useState("");
 const [licensePlate, setLicensePlate] = useState("");
 const [year, setYear] = useState("");
 const [transmission, setTransmission] = useState("");
+const [vehicleType, setVehicleType] = useState("");
 
 const userdata = JSON.parse(window.localStorage.getItem('user'));
 
-const rentData = { LicensePlate: licensePlate, Make: make, Model: model, Year: parseInt(year), CustomerID: userdata.id, transmission: transmission }
+const rentData = { LicensePlate: licensePlate, Make: make, Model: model, Year: parseInt(year), CustomerID: userdata.id, transmission: transmission, VehicleType: vehicleType}
 
 const handlerentSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +32,15 @@ const handlerentSubmit = async (e) => {
     catch(error){
         console.log(error);
     }
+}
+
+const handlepickup = (e) => {
+    setVehicleType(e.target.value);
+}
+
+
+const handletransmission = (e) => {
+    setTransmission(e.target.value);
 }
 
   return (
@@ -58,11 +68,20 @@ const handlerentSubmit = async (e) => {
                 </div>
                 <div className="input-group">
                     <label className='rent-label' htmlFor="Transmission-Type">Transmission Type</label>
-                    <input type="text" className='rent-input' id="Transmission-Type" name="Transmission-Type" required value = {transmission} onChange={(e) => setTransmission(e.target.value)} />
+                    <select value={transmission} onChange={handletransmission} className='vehicle-type-dropdown' required>
+                        <option className='rent-option' value="" disabled>Select Transmission Type</option>
+                        <option className='rent-option' value="Automatic">Automatic</option>
+                        <option className='rent-option' value="Manual">Manual</option>
+                    </select>
                 </div>
                 <div className="input-group">
-                    <label className='rent-label' htmlFor="Vehicle-Type">Transmission Type</label>
-                    <input type="text" className='rent-input' id="Transmission-Type" name="Transmission-Type" required value = {transmission} onChange={(e) => setTransmission(e.target.value)} />
+                    <label className='rent-label' htmlFor="Vehicle-Type">Vehicle Type</label>
+                    <select value={vehicleType} onChange={handlepickup} className='vehicle-type-dropdown' required>
+                        <option className='rent-option' value="" disabled>Select Vehicle Type</option>
+                        <option className='rent-option' value="Hatchback">Hatchback</option>
+                        <option className='rent-option' value="Sedan">Sedan</option>
+                        <option className='rent-option' value="SUV">SUV</option>
+                    </select>
                 </div>
                 <input className='book-btn2' type="submit" />
             </form>

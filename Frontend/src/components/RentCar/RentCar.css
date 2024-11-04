@@ -81,3 +81,28 @@
     cursor: pointer;
     margin-top: 20px;
 }
+
+.vehicle-type-dropdown{
+    width: 103%;
+    outline: none;
+    height: 65px;
+    border-radius: 15px;
+    background-color: #373737;
+    border: none;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 18px;
+    border: 0.1px solid #a19f9f41;
+    margin: 0;
+    margin-left: -12px;
+}
+
+.rent-option {
+    color: #ffffffa1;
+}
+
