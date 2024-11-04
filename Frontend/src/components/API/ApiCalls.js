@@ -30,3 +30,5 @@ export const update = async (updatedata) => {
       throw error;
     }
 }
+
+

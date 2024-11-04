@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [dropdown, setDropdown] = useState(false);
     const [user, setUser] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
-    const [rewardValue, setRewardValue] = useState(5);
+    const [rewardValue, setRewardValue] = useState(4);
     const navigate = useNavigate();
 
     useEffect(() => {
