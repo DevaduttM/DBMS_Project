@@ -25,6 +25,8 @@ const Dashboard = () => {
         }
     }, []);
 
+    window.scrollTo(0,0);
+
     const handleDropdown = () => {
         setDropdown(!dropdown);
     };

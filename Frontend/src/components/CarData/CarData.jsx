@@ -2,8 +2,12 @@ import React from 'react'
 import './CarData.css'
 import Navbar from '../Navbar/Navbar'
 import CarImage from '../../assets/Car_Image.png'
+import { useNavigate } from 'react-router-dom'
 
 const CarData = () => {
+
+    const navigate = useNavigate()
+
   return (
     <>
         <div className="main-container3">
@@ -34,7 +38,7 @@ const CarData = () => {
                             <p>300Km</p>
                         </div>
                     </div>
-                    <button className="book-btn">Book Now</button>
+                    <button className="book-btn" onClick={(e) => navigate('/booking')}>Book Now</button>
                 </div>
             </div>
 
