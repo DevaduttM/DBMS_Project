@@ -47,6 +47,8 @@ useEffect(() => {
 
   window.scrollTo(0,0);
 
+  const carsList = JSON.parse(window.localStorage.getItem('cars'));
+
   return (
     <>
         <div className="cars-container">
@@ -104,14 +106,21 @@ useEffect(() => {
                 </div>
             </div>
             <div className="cars-list-container">
+
+                    {
+                        carsList.map((cl, index) => (
+                            <CarCard key={index} details={cl} carIndex = {index} />
+                        ))
+                    }
+
+                {/* <CarCard />
                 <CarCard />
                 <CarCard />
                 <CarCard />
                 <CarCard />
                 <CarCard />
                 <CarCard />
-                <CarCard />
-                <CarCard />
+                <CarCard /> */}
             </div>
         </div>
     </>

@@ -2,7 +2,7 @@
 
 .cars-container{
     min-height: 100vh;
-    height: fit-content;
+    height: auto;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -213,10 +213,10 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
-    height: fit-content;
+    height: auto;
+    /* height: 90vh; */
     gap: 50px;
-    margin-top: 40px;
+    margin-top: 50px;
     margin-bottom: 40px;
 }
 

@@ -4,7 +4,7 @@ import { FaGoogle, FaFacebook, FaLongArrowAltRight  } from "react-icons/fa";
 import { AnimatePresence, motion } from 'framer-motion'
 import '../Signup/Signup.css'
 import axios from 'axios';
-import {login} from '../API/ApiCalls'
+import {login, dashboard, dashboard1 } from '../API/ApiCalls'
 
 const Login = () => {
 
@@ -21,6 +21,8 @@ const Login = () => {
 
     try {
       const data = await login(email, password); 
+      const data2 = await dashboard();
+      const data3 = await dashboard1();
       if (data.length > 0) {
         const user = {
           name: data[0].FirstName + ' ' + data[0].LastName,
@@ -32,7 +34,10 @@ const Login = () => {
         }
         window.localStorage.setItem('isLoggedIn', true);
         window.localStorage.setItem('user', JSON.stringify(user));
+        console.log(data2);
         navigate("/dashboard"); 
+        window.localStorage.setItem('upcoming', JSON.stringify(data2));
+        window.localStorage.setItem('past', JSON.stringify(data3));
       } else {
         setLoginstatus(1);
       }

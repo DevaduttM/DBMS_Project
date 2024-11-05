@@ -130,6 +130,13 @@
     margin-left: 10px;
 }
 
+.booked-car-name-p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: -20px;
+}
+
 .checkout-data-container{
     display: flex;
     align-items: center;

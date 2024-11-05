@@ -15,34 +15,50 @@ const Dashboard = () => {
     const [dropdown, setDropdown] = useState(false);
     const [user, setUser] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
-    const [rewardValue, setRewardValue] = useState(4);
     const navigate = useNavigate();
-
+    // const [upcoming, setUpcoming] = useState([])
+    // const [past, setPast] = useState([])
+    const upcoming = JSON.parse(window.localStorage.getItem('upcoming'));
+    const past = JSON.parse(window.localStorage.getItem('past'));
+    
     useEffect(() => {
+        // if(upcoming) {
+        //     setUpcoming(upcoming);
+        // }
+        // if(past) {
+        //     setPast(past);
+        // }
         const userData = localStorage.getItem('user');
         if (userData) {
             setUser(JSON.parse(userData));
         }
     }, []);
-
+    
     window.scrollTo(0,0);
-
+    
     const handleDropdown = () => {
         setDropdown(!dropdown);
     };
-
+    
     const handleLogout = () => {
         window.localStorage.removeItem('isLoggedIn');
         window.localStorage.removeItem('user');
+        window.localStorage.removeItem('upcoming');
+        window.localStorage.removeItem('past');
+        window.localStorage.removeItem('dates');
+        window.localStorage.removeItem('cars');
         setUser(null);
         // navigate('/login');
         <Navigate to = "/login" />
     };
-
+    
     const toggleSearch = () => {
         setShowSearch(!showSearch);
     };
     showSearch ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
+    
+    const [rewardValue, setRewardValue] = useState(past.length);
+    
 
     return (
         <>
@@ -60,8 +76,15 @@ const Dashboard = () => {
                 className="dash-row1">
                     <div className="row1-items">
                         <h2 className="sub-title">Upcoming Rentals</h2>
-                        <DashItems />
-                        <DashItems />
+                        {
+                            upcoming.length === 0? (
+                            <p className="no-rentals">No upcoming rentals available</p>
+                            ) : (
+                            upcoming.map((up, index) => (
+                                <DashItems details={up} key={index} carIndex = {index}/>
+                            
+                            )))
+                        }
                     </div>
                     <div className="row1-items">
                         <h2 className="sub-title">Find Cars</h2>
@@ -81,10 +104,14 @@ const Dashboard = () => {
                 className="dash-row2">
                     <div className="row2-item1">
                         <h2 className="sub-title1">Rental History</h2>
-                        <DashItemsPast />
-                        <DashItemsPast />
-                        <DashItemsPast />
-                        <DashItemsPast />
+                        {
+                            past.length === 0? (
+                            <p className="no-rentals">No past rentals available</p>
+                            ) : (
+                            past.map((pa, index) => (
+                                <DashItemsPast details={pa} key={index} carIndex = {index}/>
+                            )))
+                        }
                     </div>
                     <div className="row1-items">
                         <h2 className="sub-title">Rewards</h2>

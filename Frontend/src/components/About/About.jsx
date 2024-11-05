@@ -9,7 +9,7 @@ const About = () => {
             <Navbar />
             <div className="box-container">
                 <h1 className='about-title'>About Us</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium cum minima perferendis quia, recusandae voluptas quo sapiente totam dolorum dolor vero eum ipsum eos reprehenderit voluptatibus tempore fugiat sit, molestias deleniti debitis veritatis. Facere nisi fuga aperiam dolorum est corporis et dolorem labore iste rerum tempore quo eligendi eveniet, culpa aliquid ullam sapiente minus adipisci exercitationem aut magni voluptatem. Veritatis, enim id repudiandae amet sequi rem! Ratione magnam sequi voluptatibus!</p>
+                <p>Welcome to TorqHub, your trusted partner in flexible and convenient car rental and sharing. We believe in providing not only transportation solutions but also experiences that enable freedom, flexibility, and empowerment. Our platform is tailored for everyone—from the occasional traveler looking for a weekend getaway vehicle, to city dwellers needing a convenient daily commute, to car owners seeking to earn extra income by sharing their vehicle.!</p>
             </div>
         </div>
     </>

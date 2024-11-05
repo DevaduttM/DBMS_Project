@@ -10,6 +10,28 @@ export const login = async (email, password) => {
   }
 };
 
+export const dashboard = async () => {
+  try{
+    const response2 = await axios.post('http://localhost:8081/dashboard');
+    return response2.data;
+  }
+  catch (error){
+    console.error("Dashboard Error:", error);
+    throw error;
+  }
+}
+
+export const dashboard1 = async () => {
+  try{
+    const response2 = await axios.post('http://localhost:8081/dashboard1');
+    return response2.data;
+  }
+  catch (error){
+    console.error("Dashboard Error:", error);
+    throw error;
+  }
+}
+
 
 export const signup = async (newUser) => {
    try {
@@ -40,5 +62,49 @@ export const rentInsert = async (rentData) => {
       throw error;
     }
 }
+
+export const searchCar = async (carData) => {
+   try {
+      const response = await axios.post('http://localhost:8081/searchcar', carData);
+      return response.data;
+   } catch (error) {
+      console.error("Search Car Error:", error);
+      throw error;
+    }
+}
+
+export const booking = async (bookingData) => {
+   try {
+      const response = await axios.post('http://localhost:8081/booking', bookingData);
+      
+      return response;
+   } catch (error) {
+      console.error("Booking Error:", error);
+      throw error;
+    }
+}
+
+
+// export const booking3 = async () => {
+//    try {
+//       const response = await axios.post('http://localhost:8081/booking3');
+//       return response;
+//    } catch (error) {
+//       console.error("Booking Error:", error);
+//       throw error;
+//     }
+// }
+// export const booking2 = async (booking2data) => {
+//    try {
+//       const response = await axios.post('http://localhost:8081/booking2', booking2data);
+//       return response;
+//    } catch (error) {
+//       console.error("Booking Error:", error);
+//       throw error;
+//     }
+// }
+
+
+
 
 
