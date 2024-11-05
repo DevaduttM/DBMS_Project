@@ -106,3 +106,26 @@
     color: #ffffffa1;
 }
 
+@media (max-width: 768px) {
+    .rent-input{
+        font-size: 15px;
+        height: 50px;
+    }
+
+    .rent-form{
+        width: 100%;
+    }
+
+    .input-group{
+        width: 80%;
+    }
+
+    .vehicle-type-dropdown{
+        font-size: 14px;
+    }
+
+    .rentcar-title{
+        margin-top: 70px;
+    }
+}
+
