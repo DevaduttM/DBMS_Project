@@ -10,9 +10,10 @@ export const login = async (email, password) => {
   }
 };
 
-export const dashboard = async () => {
+export const dashboard = async (CustomerID) => {
   try{
-    const response2 = await axios.post('http://localhost:8081/dashboard');
+    const response2 = await axios.post('http://localhost:8081/dashboard', CustomerID);
+    console.log(response2.data);
     return response2.data;
   }
   catch (error){
@@ -21,9 +22,9 @@ export const dashboard = async () => {
   }
 }
 
-export const dashboard1 = async () => {
+export const dashboard1 = async (CustomerID) => {
   try{
-    const response2 = await axios.post('http://localhost:8081/dashboard1');
+    const response2 = await axios.post('http://localhost:8081/dashboard1', CustomerID);
     return response2.data;
   }
   catch (error){
@@ -63,6 +64,16 @@ export const rentInsert = async (rentData) => {
     }
 }
 
+export const rentInsert2 = async (rentData) => {
+   try {
+      const response = await axios.post('http://localhost:8081/rentyourcar2', rentData);
+      return response.data;
+   } catch (error) {
+      console.error("Rent Insert Error:", error);
+      throw error;
+    }
+}
+
 export const searchCar = async (carData) => {
    try {
       const response = await axios.post('http://localhost:8081/searchcar', carData);
@@ -76,13 +87,39 @@ export const searchCar = async (carData) => {
 export const booking = async (bookingData) => {
    try {
       const response = await axios.post('http://localhost:8081/booking', bookingData);
-      
+
       return response;
    } catch (error) {
       console.error("Booking Error:", error);
       throw error;
     }
 }
+
+
+export const yourcar = async (OwnerID) => {
+   try {
+      const response = await axios.post('http://localhost:8081/yourcar', OwnerID);
+
+      return response;
+   } catch (error) {
+      console.error("Booking Error:", error);
+      throw error;
+    }
+}
+
+
+export const carbookings = async (VehicleID) => {
+   try {
+      const response = await axios.post('http://localhost:8081/carbookings', VehicleID);
+
+      return response;
+   } catch (error) {
+      console.error("Booking Error:", error);
+      throw error;
+    }
+}
+
+
 
 
 // export const booking3 = async () => {

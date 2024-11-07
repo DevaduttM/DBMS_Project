@@ -5,6 +5,7 @@ import '../Landing/Landing.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { searchCar } from '../API/ApiCalls'
 
+
 const CarSearch = () => {
 
     const [toggle, setToggle] = useState(true);
@@ -31,7 +32,10 @@ const CarSearch = () => {
         if(result.length === 0){
           alert("No cars available on given date")
         }
-        navigate('/cars')
+        else{
+
+          navigate('/cars')
+        }
 
         const dates = {endDate: endDate, startDate: startDate, dropoff: selectedDropoff, pickup: selectedPickup}
 

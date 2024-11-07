@@ -8,6 +8,7 @@ import CarCard from './CarCard';
 import Navbar from '../Navbar/Navbar';
 import Logo from '../../assets/Logo.png';
 
+
 const Cars = () => {
 
 const [btnsel, setBtnsel] = useState(0);
@@ -49,6 +50,8 @@ useEffect(() => {
 
   const carsList = JSON.parse(window.localStorage.getItem('cars'));
 
+  
+
   return (
     <>
         <div className="cars-container">
@@ -69,7 +72,7 @@ useEffect(() => {
                     <button className={btnsel === 1 ?'sort-btn active' : 'sort-btn'} onClick={handlebtnsel1}>Price: Low to High</button>
                     <button className={btnsel === 2 ?'sort-btn active' : 'sort-btn'} onClick={handlebtnsel2}>Price: High to Low</button>
                 </div>
-                <div className="filter-div">
+                {/* <div className="filter-div">
                     <p onClick={handledropdwn} className='filter-p'><LuFilter />Filter</p>
 
                     <AnimatePresence>
@@ -103,7 +106,7 @@ useEffect(() => {
                         </div>
                     }
                     </AnimatePresence>
-                </div>
+                </div> */}
             </div>
             <div className="cars-list-container">
 

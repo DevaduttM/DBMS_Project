@@ -38,13 +38,14 @@ const Booking = () => {
     const handleBooking = async (e) => {
         try{
             const response = await booking(bookingData);
-            const response2 = await dashboard();
-            const response3 = await dashboard1();
-            window.localStorage.setItem('upcoming', JSON.stringify(response2));
-            window.localStorage.setItem('past', JSON.stringify(response3));
+            const data2 = await dashboard({id:user.id});
+            const data3 = await dashboard1({id: user.id});
+            window.localStorage.setItem('upcoming', JSON.stringify(data2));
+            window.localStorage.setItem('past', JSON.stringify(data3));
             // const response3 = await booking2(booking2data);
             // response2 = await booking3();
             console.log(response);
+            
             // console.log(response2);
         }
         catch(error){
@@ -53,6 +54,8 @@ const Booking = () => {
     }
 
     window.scrollTo(0,0);
+
+    const reward = window.localStorage.getItem('reward');
 
 
   return (
@@ -104,10 +107,30 @@ const Booking = () => {
                         <p>2000</p>
                     </div>
                     <hr />
-                    <div className="checkout-data">
-                        <p className='checkout-p'>Total Payable Amount</p>
-                        <p className='checkout-p'>₹ {parseInt(selectedCar.price) + 2*(parseInt(parseInt(selectedCar.price) * 0.14)) + 2000}</p>
-                    </div>
+                    {
+                        reward === true ? (
+                            <>
+                                <div className="checkout-data">
+                                    <p>Earned Reward</p>
+                                    <p>10%</p>
+                                </div>
+                                <div className="checkout-data">
+                                    <p className='checkout-p'>Total Payable Amount</p>
+                                    <p className='checkout-p'>
+                                        ₹ {(parseInt(selectedCar.price) + 2 * parseInt(parseInt(selectedCar.price) * 0.14) + 2000) - 
+                                        (parseInt(selectedCar.price) + 2 * parseInt(parseInt(selectedCar.price) * 0.14) + 2000) * 0.1}
+                                    </p>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="checkout-data">
+                                <p className='checkout-p'>Total Payable Amount</p>
+                                <p className='checkout-p'>
+                                    ₹ {parseInt(selectedCar.price) + 2 * parseInt(parseInt(selectedCar.price) * 0.14) + 2000}
+                                </p>
+                            </div>
+                        )
+                    }
                     <button className="book-btn3" onClick={(e) => {setShowThanks(true), handleBooking(e)} }>Make Payment</button>
                 </div>
                 </div>

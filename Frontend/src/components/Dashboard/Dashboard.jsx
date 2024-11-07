@@ -47,6 +47,9 @@ const Dashboard = () => {
         window.localStorage.removeItem('past');
         window.localStorage.removeItem('dates');
         window.localStorage.removeItem('cars');
+        window.localStorage.removeItem('nextpage');
+        window.localStorage.removeItem('yourcar');
+        window.localStorage.removeItem('selectedCar');
         setUser(null);
         // navigate('/login');
         <Navigate to = "/login" />
@@ -58,6 +61,13 @@ const Dashboard = () => {
     showSearch ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     
     const [rewardValue, setRewardValue] = useState(past.length);
+
+    if(rewardValue >=5) {
+        window.localStorage.setItem('reward', true);
+    }
+    else{
+        window.localStorage.setItem('reward', false);
+    }
     
 
     return (
@@ -94,7 +104,7 @@ const Dashboard = () => {
                     <div className="row1-items">
                         <h2 className="sub-title" id = "rent-title">Rent your car</h2>
                         <p className="findcars-p">Have a car that’s not in use? Put it to work! With our "Rent Your Car" feature, you can easily list your vehicle on our platform and start earning by sharing it with our trusted community.</p>
-                        <Link to = "/rentyourcar" className='findcars-btn'>Rent Your Car</Link>
+                        <Link to = "/yourcars" className='findcars-btn'>Rent Your Car</Link>
                     </div>
                 </motion.div>
                 <motion.div 

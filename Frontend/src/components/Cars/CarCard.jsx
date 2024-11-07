@@ -11,6 +11,7 @@ const CarCard = ({details, carIndex}) => {
 
   const handleBookingClick = () => {
     window.localStorage.setItem('selectedCar', JSON.stringify(details));
+    window.localStorage.setItem('nextpage', "/booking");
     navigate('/booking');
   };
 

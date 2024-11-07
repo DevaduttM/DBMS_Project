@@ -30,10 +30,13 @@ app.post('/dashboard', (req, res) => {
   SELECT vehicle.*, reservation.ReservationStartDate
   FROM vehicle 
   JOIN reservation ON vehicle.VehicleID = reservation.VehicleID
-  WHERE reservation.ReservationStartDate > CURDATE()
+  WHERE reservation.ReservationStartDate > CURDATE() and reservation.CustomerID = ?
 `;
 
-    db.query(sql, (err, data) => {
+    const values = [req.body.id];
+
+
+    db.query(sql, values, (err, data) => {
         if (err) return res.json(err);
         console.log(data);
         return res.json(data);
@@ -45,10 +48,12 @@ app.post('/dashboard1', (req, res) => {
   SELECT vehicle.*, reservation.ReservationEndDate
   FROM vehicle 
   JOIN reservation ON vehicle.VehicleID = reservation.VehicleID
-  WHERE reservation.ReservationEndDate < CURDATE()
+  WHERE reservation.ReservationEndDate < CURDATE() and reservation.CustomerID = ?
 `;
 
-    db.query(sql, (err, data) => {
+    const values = [req.body.id];
+
+    db.query(sql, values, (err, data) => {
         if (err) return res.json(err);
         return res.json(data);
     });
@@ -141,18 +146,9 @@ app.post('/signup', (req, res) => {
 
 app.post('/rentyourcar', (req, res) => {
     const sql = "insert into vehicle (LicensePlate, Make, Model, Year, OwnerID, transmission, Type, PickUpLocation, bookStatus, price) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    const values = [req.body.LicensePlate, req.body.Make, req.body.Model, req.body.Year, req.body.CustomerID, req.body.transmission, req.body.VehicleType, req.body.pickup, 0, req.body.price];
+    const values = [req.body.LicensePlate, req.body.Make, req.body.Model, req.body.Year, req.body.CustomerID, req.body.transmission, req.body.VehicleType, req.body.pickup, "0", req.body.price];
 
-    const sql2 = 'insert into owner values (?, ?, ? )'
-    const values2 = [req.body.CustomerID, req.body.name, req.body.phone];
     console.log(values)
-    db.query(sql2, values2, (err, data) => {
-        if (err) {
-            if (err.code === 'ER_DUP_ENTRY') {
-                // return res.json("Duplicate Entry");
-            }
-        } return res.json(err);
-    })
     db.query(sql, values, (err, data) => {
         if (err) {
             if (err.code === 'ER_DUP_ENTRY') {
@@ -162,6 +158,21 @@ app.post('/rentyourcar', (req, res) => {
     })
 
 })
+
+app.post('/rentyourcar2', (req, res) => {
+
+    const sql2 = 'insert into owner values (?, ?, ? )'
+    const values2 = [req.body.CustomerID, req.body.name, req.body.phone];
+    db.query(sql2, values2, (err, data) => {
+        if (err) {
+            if (err.code === 'ER_DUP_ENTRY') {
+                // return res.json("Duplicate Entry");
+            }
+        } return res.json(err);
+    })
+
+})
+
 
 
 
@@ -174,6 +185,30 @@ app.post('/searchcar', (req, res) => {
                 return res.json("Duplicate Entry");
             }
         } return res.json(data)
+    })
+})
+
+app.post('/yourcar', (req, res) => {
+    const sql = "SELECT DISTINCT v.* FROM vehicle v LEFT JOIN reservation r ON v.VehicleID = r.VehicleID WHERE v.OwnerID = ?"
+    const values = [req.body.id];
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            return res.json(err)
+        } return res.json(data)
+    })
+})
+
+app.post('/carbookings', (req, res) => {
+    const sql = "select c.FirstName, c.LastName, r.* from customer c left join reservation r on c.CustomerID = r.CustomerID left join vehicle v on v.VehicleID = r.VehicleID where v.VehicleID = ?"
+
+    const values = [req.body.VehicleID];
+
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            return res.json(err)
+        } 
+        console.log(data)
+        return res.json(data)
     })
 })
 

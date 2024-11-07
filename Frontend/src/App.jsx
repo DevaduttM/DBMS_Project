@@ -15,6 +15,7 @@ import Cars  from './components/Cars/Cars'
 import NotFound from './components/NotFound/NotFound'
 import RentCar from './components/RentCar/RentCar'
 import Booking from './components/Booking/Booking'
+import YourCars from './components/YourCars/YourCars'
 
 const App = () => {
 
@@ -35,6 +36,7 @@ const App = () => {
             <Route path='/profile' element = {<Profile /> } />
             <Route path='/rentyourcar' element = {<RentCar /> } />
             <Route path='/booking' element = {<Booking /> } />
+            <Route path='/yourcars' element = {<YourCars /> } />
           </Route>
           <Route path='/cardata' element = {<CarData />} />
           <Route path='/cars' element = {<Cars />} />

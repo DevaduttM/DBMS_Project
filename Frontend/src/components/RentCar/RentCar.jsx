@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './RentCar.css'
 import Logo from '../../assets/Logo.png';
-import { rentInsert } from '../API/ApiCalls'
+import { rentInsert, rentInsert2, yourcar } from '../API/ApiCalls'
 
 const RentCar = () => {
 
@@ -19,14 +19,20 @@ const userdata = JSON.parse(window.localStorage.getItem('user'));
 
 const rentData = { LicensePlate: licensePlate, Make: make, Model: model, Year: parseInt(year), CustomerID: userdata.id, transmission: transmission, VehicleType: vehicleType, name: userdata.name, phone: userdata.phone, pickup: pickup, price: price}
 
+const navigate = useNavigate();
+
 const handlerentSubmit = async (e) => {
     e.preventDefault();
     try{
         const response = await rentInsert(rentData);
+        const response2 = await rentInsert2(rentData);
         if (response === 'Duplicate Entry') {
             alert('This car is already rented. Please choose another one.')
         }
         console.log(response)
+        const response3 = await yourcar({id: userdata.id});
+        window.localStorage.setItem('yourcar', JSON.stringify(response3.data));
+        navigate('/yourcars')
 
         // else{
         //     window.localStorage.setItem('')

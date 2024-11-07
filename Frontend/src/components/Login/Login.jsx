@@ -4,7 +4,7 @@ import { FaGoogle, FaFacebook, FaLongArrowAltRight  } from "react-icons/fa";
 import { AnimatePresence, motion } from 'framer-motion'
 import '../Signup/Signup.css'
 import axios from 'axios';
-import {login, dashboard, dashboard1 } from '../API/ApiCalls'
+import {login, dashboard, dashboard1, yourcar} from '../API/ApiCalls'
 
 const Login = () => {
 
@@ -15,14 +15,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const rentData = {CustomerID: 3}
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const data = await login(email, password); 
-      const data2 = await dashboard();
-      const data3 = await dashboard1();
       if (data.length > 0) {
         const user = {
           name: data[0].FirstName + ' ' + data[0].LastName,
@@ -34,10 +34,20 @@ const Login = () => {
         }
         window.localStorage.setItem('isLoggedIn', true);
         window.localStorage.setItem('user', JSON.stringify(user));
-        console.log(data2);
-        navigate("/dashboard"); 
+        const data2 = await dashboard({id:user.id});
+        const data3 = await dashboard1({id: user.id});
+        console.log(user.id);
+
+        const response3 = await yourcar({id: user.id});
+        window.localStorage.setItem('yourcar', JSON.stringify(response3.data));
+
         window.localStorage.setItem('upcoming', JSON.stringify(data2));
         window.localStorage.setItem('past', JSON.stringify(data3));
+        const nextpg = window.localStorage.getItem('nextpage');
+
+
+        nextpg === "/booking" ? navigate("/booking") : navigate("/dashboard"); 
+        
       } else {
         setLoginstatus(1);
       }
